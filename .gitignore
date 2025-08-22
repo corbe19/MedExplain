@@ -1,0 +1,70 @@
+# ---- Python / FastAPI ----
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+*.pid
+*.gz
+
+# Virtual environments
+venv/
+.env/
+*.env
+
+# Pytest / coverage
+.coverage
+coverage/
+htmlcov/
+.pytest_cache/
+
+# Model weights or large files (handled elsewhere)
+*.h5
+*.ckpt
+*.pth
+*.pt
+
+# ---- Node / Next.js ----
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Next.js build outputs
+.next/
+out/
+dist/
+
+# Logs
+logs
+*.log
+*.log.*
+debug.log
+package-lock.json
+yarn.lock
+
+# ---- OS-specific ----
+.DS_Store
+Thumbs.db
+
+# ---- IDE / Editor ----
+.vscode/
+.idea/
+*.swp
+
+# ---- Docker ----
+*.pid
+*.seed
+*.pid.lock
+
+# ---- Misc ----
+# Ignore generated PDFs, audio, or artifacts
+*.pdf
+*.mp3
+*.wav
+*.png
+*.jpg
+*.jpeg
