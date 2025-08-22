@@ -1,11 +1,16 @@
-from fastapi import APIRouter, UploadFile
+import tempfile
+from fastapi import APIRouter, UploadFile, File
 from app.services.vision import classify_image
 
-router = APIRouter(prefix="/analyze", tags=["analyze"])
+router = APIRouter()
 
-@router.post("/image")
-async def analyze_image(file: UploadFile):
-    with open(file.filename, "wb") as f:
-        f.write(file.file.read())
-    result = classify_image(file.filename)
-    return {"labels": result}
+@router.post("/api/analyze/image")
+async def analyze_image(file: UploadFile = File(...)):
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as tmp:
+        contents = await file.read()
+        tmp.write(contents)
+        tmp_path = tmp.name  # save path before closing
+    
+    # Now the file is closed, safe to open again
+    result = classify_image(tmp_path, top_k=5)
+    return {"result": result}
